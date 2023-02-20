@@ -11,7 +11,6 @@ const App = () => {
   const APP_ID = "33042e6e";
   const APP_KEYS = "9b0755b710b1ed633456a0fd5c691e48";
 
-  //  const example_request =
 
   useEffect(() => {
     getRecipes();
@@ -42,10 +41,10 @@ const App = () => {
         <input className = "search-bar" type="text" value = {search} onChange ={updateSearch} />
         <button className = "search-button" type="submit"> Search</button>
       </form>
-      <div className="recipes">
-      {recipes.map(recipe => (
+      <div className="recipesCard">
+      {recipes.map((recipe, index) => (
         <Recipe 
-        key = {recipe.recipe.lable}
+        key = {index}
         title = {recipe.recipe.label} 
         calories = {recipe.recipe.calories}
         image = {recipe.recipe.image}
