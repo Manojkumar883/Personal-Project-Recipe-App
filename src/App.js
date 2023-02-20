@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import Recipe from "./Components/Recipes"
-
-import "./App.css";
+import Recipe from "./Components/Recipe/Recipes"
+import "./App.css"
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -30,25 +29,29 @@ const App = () => {
 
   const updateSearch = (event) => {
     setSearch(event.target.value)
-    console.log(search)
   }
+
   const handleSearch = (event) => {
     event.preventDefault()
     setSubmit(search)
+    setSearch('')
   }
   return (
-    <div>
+    <div className = "App">
       <form onSubmit = {handleSearch} className = "search-form" >
         <input className = "search-bar" type="text" value = {search} onChange ={updateSearch} />
-        <button type="submit"> Search</button>
+        <button className = "search-button" type="submit"> Search</button>
       </form>
+      <div className="recipes">
       {recipes.map(recipe => (
         <Recipe 
         key = {recipe.recipe.lable}
         title = {recipe.recipe.label} 
         calories = {recipe.recipe.calories}
-        image = {recipe.recipe.image} />
+        image = {recipe.recipe.image}
+        ingredients = {recipe.recipe.ingredients} />
       ))}
+      </div>
     </div>
   );
 };
